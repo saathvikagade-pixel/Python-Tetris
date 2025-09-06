@@ -14,13 +14,13 @@ clock = pygame.time.Clock() # To control frame rate and how fast game runs
 
 game_grid = Grid()
 
-block = TBlock()
+#block = TBlock()
 #block = LBlock()
 #block = OBlock()
 #block = SBlock()
 #block = JBlock()
 #block = IBlock()
-#block = ZBlock()
+block = ZBlock()
 
 #game_grid.print_grid()
 
