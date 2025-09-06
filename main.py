@@ -12,6 +12,16 @@ pygame.display.set_caption("Python Tetris") # Title
 clock = pygame.time.Clock() # To control frame rate and how fast game runs
 
 game_grid = Grid()
+
+game_grid.grid[0][0] = 0
+game_grid.grid[3][5] = 1
+game_grid.grid[17][8] = 2
+game_grid.grid[16][4] = 3
+game_grid.grid[0][5] = 4
+game_grid.grid[5][0] = 5
+game_grid.grid[8][9] = 6
+game_grid.grid[19][0] = 7
+
 game_grid.print_grid()
 
 """
@@ -31,6 +41,7 @@ while True:
 
     # Drawing the objects
     screen.fill(dark_blue)
+    game_grid.draw(screen)
     
     pygame.display.update()
     clock.tick(60) # 60 frames per second
