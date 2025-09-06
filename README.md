@@ -1,1 +1,1 @@
-This is the code for a simplified version of the popular game Tetris solely in the language Python. It uses OOP principles and sound files to create a complete, fun and engaging game. 
+This is the code for a simplified version of the popular game Tetris solely in the language Python. It uses OOP principles and sound files to create a complete, fun and engaging game. This game was created by following along with the video https://www.youtube.com/watch?v=nF_crEtmpBo with some additional input plus comments for better readability.
