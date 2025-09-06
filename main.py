@@ -1,6 +1,7 @@
 import pygame
 import sys
 from grid import Grid
+from blocks import *
 
 pygame.init()
 dark_blue = (44, 44, 127)
@@ -13,16 +14,15 @@ clock = pygame.time.Clock() # To control frame rate and how fast game runs
 
 game_grid = Grid()
 
-game_grid.grid[0][0] = 0
-game_grid.grid[3][5] = 1
-game_grid.grid[17][8] = 2
-game_grid.grid[16][4] = 3
-game_grid.grid[0][5] = 4
-game_grid.grid[5][0] = 5
-game_grid.grid[8][9] = 6
-game_grid.grid[19][0] = 7
+block = TBlock()
+#block = LBlock()
+#block = OBlock()
+#block = SBlock()
+#block = JBlock()
+#block = IBlock()
+#block = ZBlock()
 
-game_grid.print_grid()
+#game_grid.print_grid()
 
 """
 Game Loop Code
@@ -42,6 +42,7 @@ while True:
     # Drawing the objects
     screen.fill(dark_blue)
     game_grid.draw(screen)
+    block.draw(screen)
     
     pygame.display.update()
     clock.tick(60) # 60 frames per second
