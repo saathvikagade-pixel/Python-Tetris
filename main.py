@@ -3,12 +3,21 @@ import sys
 from grid import Grid
 from blocks import *
 from game import Game
+from colours import Colours
 
 pygame.init()
-dark_blue = (44, 44, 127)
+
+title_font = pygame.font.Font(None, 40)
+score_surface = title_font.render("Score", True, Colours.white)
+next_surface = title_font.render("Next", True, Colours.white)
+game_over_surface = title_font.render("GAME OVER", True, Colours.white)
+
+score_rect = pygame.Rect(320, 55, 170, 60) # x and y coordinates, width and height of rectangle
+next_rect = pygame.Rect(320, 215, 170, 180)
+
 
 # Create the display screen
-screen = pygame.display.set_mode((300, 600)) # Set width and height of display surface
+screen = pygame.display.set_mode((500, 620)) # Set width and height of display surface
 pygame.display.set_caption("Python Tetris") # Title
 
 clock = pygame.time.Clock() # To control frame rate and how fast game runs
@@ -17,7 +26,7 @@ clock = pygame.time.Clock() # To control frame rate and how fast game runs
 game = Game()
 
 GAME_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(GAME_UPDATE, 20)
+pygame.time.set_timer(GAME_UPDATE, 200)
 
 #block = TBlock()
 #block = LBlock()
@@ -59,7 +68,14 @@ while True:
             game.move_down()
 
     # Drawing the objects
-    screen.fill(dark_blue)
+    screen.fill(Colours.dark_blue)
+    screen.blit(score_surface, (365, 20, 50, 50))
+    screen.blit(next_surface, (375, 180, 50, 50))
+    if game.game_over == True:
+        screen.blit(game_over_surface, (320, 450, 50, 50))
+        
+    pygame.draw.rect(screen, Colours.light_blue, score_rect, 0, 10) # Rounded rectangle to display score
+    pygame.draw.rect(screen, Colours.light_blue, next_rect, 0, 10) # Rounded rectangle to display next block
     game.draw(screen)
     #game_grid.draw(screen)
     #block.draw(screen)

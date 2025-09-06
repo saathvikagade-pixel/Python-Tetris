@@ -59,5 +59,5 @@ class Grid:
         for row in range(self.num_rows):
             for column in range(self.num_cols):
                 cell_value = self.grid[row][column]
-                cell_rect = pygame.Rect(column*self.cell_size +1, row*self.cell_size +1, self.cell_size-1, self.cell_size-1) # x, y, width and height of each rectangle pixel. Make it 29 x 29 pixels to create a 1 pixel margin
+                cell_rect = pygame.Rect(column*self.cell_size + 11, row*self.cell_size + 11, self.cell_size-1, self.cell_size-1) # x, y, width and height of each rectangle pixel. Make it 29 x 29 pixels to create a 1 pixel margin
                 pygame.draw.rect(screen, self.colours[cell_value], cell_rect)
