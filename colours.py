@@ -1,4 +1,7 @@
 class Colours:
+    '''
+    Class for colours. Makes code more organised
+    '''
     dark_grey = (26, 31, 40)
     green = (47, 230, 23)
     red = (232, 18, 18)

@@ -2,7 +2,10 @@ from colours import Colours
 import pygame
 from position import Position
 
-class Block: 
+class Block:
+    '''
+    The Block class
+    ''' 
     def __init__(self, id):
         self.id = id
         self.cells = {} # Using a dictionary to store values of occupied cells
@@ -13,28 +16,43 @@ class Block:
         self.colours = Colours.get_cell_colours()
 
     def move(self, rows, columns):
+        '''
+        Move block. Takes as arguments row and column numbers. Returns moved block
+        '''
         self.row_offset += rows
         self.column_offset += columns
 
     def get_cell_positions(self):
+        '''
+        Identify tile positions of block
+        '''
         tiles = self.cells[self.rotation_state]
-        moved_tiles = []
+        moved_tiles = [] # Initialise empty list to store position of moved tiles
         for position in tiles:
             position = Position(position.row + self.row_offset, position.column + self.column_offset)
             moved_tiles.append(position)
         return moved_tiles
     
     def rotate(self):
-        self.rotation_state += 1
+        '''
+        Configure rotation state of block
+        '''
+        self.rotation_state += 1 # GO through rotation states
         if self.rotation_state == len(self.cells):
-            self.rotation_state = 0
+            self.rotation_state = 0 # Go back to state 0 if end if reached
 
     def undo_rotation(self):
+        '''
+        Undo rotation of not valid
+        '''
         self.rotation_state -= 1
         if self.rotation_state == 0:
-            self.rotation_state = len(self.cells) - 1
+            self.rotation_state = len(self.cells) - 1 # Wrap around to the end
 
     def draw(self, screen, offset_x, offset_y):
+        '''
+        Draw the screen
+        '''
         tiles = self.get_cell_positions()
         for tile in tiles:
             tile_rect = pygame.Rect(offset_x + tile.column * self.cell_size, offset_y + tile.row * self.cell_size, self.cell_size - 1, self.cell_size - 1)
